@@ -4,7 +4,6 @@
 
     // 一度だけ読み込む
     require_once '../classes/UserLogic.php';
-    require_once './functions.php';
     require_once '../classes/general.php';
 
     // ログインしているか判定、してない場合、新規登録画面へ返す
@@ -103,7 +102,7 @@
         <?php endif; ?>
 
         <!--投稿日時-->
-        <p>投稿日時：<input type="text" name="post_at" value="<?php if (isset($blogdetail_data['post_at'])) echo $blogdetail_data['post_at'] ?>" readonly></p>
+        <p>投稿日時：<input type="text" name="updateTime" value="<?php if (isset($blogdetail_data['updateTime'])) echo $blogdetail_data['updateTime'] ?>" readonly></p>
 
         <?php if (!isset($update_err['category'])): ?>
             <?php if (isset($blogdetail_data['category'])): ?>
@@ -112,7 +111,7 @@
         <?php endif; ?>
 
         <!--カテゴリ-->
-        <label for="publish_status">カテゴリ：</label>
+        <label for="status">カテゴリ：</label>
 
         <?php switch ($category):
             case 1:

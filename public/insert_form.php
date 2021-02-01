@@ -61,7 +61,7 @@
         <?php endif; ?>
 
         <!--カテゴリ-->
-        <label for="publish_status">カテゴリ：</label>
+        <label for="status">カテゴリ：</label>
         <input type="radio" name="category" value="1" checked>ブログ
         <input type="radio" name="category" value="2">日常
         <input type="radio" name="category" value="3">その他        
@@ -73,9 +73,9 @@
         </P>
 
         <!-- ステータスの公開 -->
-        <label for="publish_status">ステータスの公開：</label>
-        <input type="radio" name="publish_status" value="1" checked>公開
-        <input type="radio" name="publish_status" value="2">非公開
+        <label for="status">ステータスの公開：</label>
+        <input type="radio" name="status" value="1" checked>公開
+        <input type="radio" name="status" value="2">非公開
 
         <hr>    <!-- 線を入れる -->
         <input type="submit" name = "InsertProcessing" value = "登録" class="btn">

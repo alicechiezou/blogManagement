@@ -101,7 +101,7 @@
             // SQLの準備
             // SQLの実行
             // SQLの結果を返す
-            $sql = 'SELECT * FROM blog';
+            $sql = 'SELECT * FROM blogs';
 
             try{
                 // ユーザからの入力をSQL文に含めて接続
@@ -126,7 +126,7 @@
             // SQLの準備
             // SQLの実行
             // SQLの結果を返す
-            $sql = 'SELECT * FROM blog WHERE id = :id';
+            $sql = 'SELECT * FROM blogs WHERE id = :id';
 
             try{
                 // ユーザからの入力をSQL文に含めて接続
@@ -152,26 +152,24 @@
             $result = false;
 
             //update
-            $sql = 'INSERT INTO blog (title,content,category,post_at,publish_status) VALUES (?,?,?,?,?)'; 
+            $sql = 'INSERT INTO blogs (title,content,category,updateTime,status) VALUES (?,?,?,?,?)'; 
 
             try{
-                // 本日日時を取得
-                date_default_timezone_set('Asia/Tokyo');
-                $post_at = date("Y-m-d H:i:s");
 
                 $dbh = connect();
                 $dbh->beginTransaction();
 
+                // 本日日時を取得
                 date_default_timezone_set('Asia/Tokyo');
-                $post_at = date("Y-m-d H:i:s");
+                $updateTime = date("Y-m-d H:i:s");
 
                 // ユーザデータを配列に入れる
                 $arr = [];
                 $arr[] = $userData['title'];
                 $arr[] = $userData['content']; 
                 $arr[] = (int)$userData['category']; 
-                $arr[] = $post_at; 
-                $arr[] = (int)$userData['publish_status'];                                          
+                $arr[] = $updateTime; 
+                $arr[] = (int)$userData['status'];                                          
         
                 // ユーザからの入力をSQL文に含めて接続
                 $stmt = $dbh->prepare($sql);
@@ -197,7 +195,7 @@
             $result = false;
 
             //update
-            $sql = 'UPDATE blog SET title=:title,content=:content,category=:category,post_at=:post_at WHERE id=:id'; 
+            $sql = 'UPDATE blogs SET title=:title,content=:content,category=:category,updateTime=:updateTime WHERE id=:id'; 
 
             try{
 
@@ -205,7 +203,7 @@
                 $dbh->beginTransaction();
 
                 date_default_timezone_set('Asia/Tokyo');
-                $post_at = date("Y-m-d H:i:s");
+                $updateTime = date("Y-m-d H:i:s");
 
                 // ユーザからの入力をSQL文に含めて接続
                 $stmt = $dbh->prepare($sql);
@@ -213,7 +211,7 @@
                 $stmt->bindParam (':title', $userData['title'], PDO::PARAM_STR);  
                 $stmt->bindParam (':content', $userData['content'], PDO::PARAM_STR);  
                 $stmt->bindValue(':category', (int)$userData['category'], PDO::PARAM_INT);  
-                $stmt->bindParam (':post_at', $post_at, PDO::PARAM_STR);                                            
+                $stmt->bindParam (':updateTime', $updateTime, PDO::PARAM_STR);                                            
                 $result=$stmt->execute();
                 $dbh->commit();
                 return $result;
@@ -239,7 +237,7 @@
             $dbh->beginTransaction();
 
             //update
-            $sql = 'DELETE FROM blog WHERE id=:id'; 
+            $sql = 'DELETE FROM blogs WHERE id=:id'; 
 
             try{
                 // ユーザからの入力をSQL文に含めて接続

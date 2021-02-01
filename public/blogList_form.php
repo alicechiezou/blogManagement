@@ -4,7 +4,6 @@
 
     // 一度だけ読み込む
     require_once '../classes/UserLogic.php';
-    require_once './functions.php';
     require_once '../classes/constractData.php';
     require_once '../classes/general.php';
 

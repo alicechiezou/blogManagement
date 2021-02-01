@@ -4,7 +4,6 @@
 
     // 一度だけ読み込む
     require_once '../classes/UserLogic.php';
-    require_once './functions.php';
     require_once '../classes/constractData.php';    
     require_once '../classes/general.php'; 
 
@@ -59,7 +58,7 @@
     <?php endif; ?>    
     
     <h3>タイトル：<?php if (isset($blogdetail_data['title'])) echo $blogdetail_data['title'] ?></h3>
-    <p>投稿日時：<?php if (isset($blogdetail_data['post_at'])) echo $blogdetail_data['post_at'] ?></p>
+    <p>投稿日時：<?php if (isset($blogdetail_data['updateTime'])) echo $blogdetail_data['updateTime'] ?></p>
     <p>カテゴリ：<?php if (isset($blogdetail_data['category'])) echo $categoryName::setCategoryName($blogdetail_data['category']) ?></p>
     <hr>    <!-- 線を入れる -->
     <p>本文：<?php if (isset($blogdetail_data['content'])) echo $blogdetail_data['content'] ?></p>

@@ -36,8 +36,8 @@
                   $csvstr .= $row['title'] . ",";
                   $csvstr .= $row['content'] . ",";
                   $csvstr .= $row['category'] . ",";
-                  $csvstr .= $row['post_at'] . ",";
-                  $csvstr .= $row['publish_status'] . "\r\n";
+                  $csvstr .= $row['updateTime'] . ",";
+                  $csvstr .= $row['status'] . "\r\n";
                 }
                 
                 fwrite($fp, "write sample");
@@ -75,7 +75,7 @@
             fwrite($temp, $data);   // バイナリセーフなファイル書き込み処理
             rewind($temp);  // ファイルポインタの位置を先頭に戻す
 
-            $sql = 'INSERT INTO blog (title,content,category,post_at,publish_status) VALUES (?, ?, ?, ?, ?)';
+            $sql = 'INSERT INTO blogs (title,content,category,updateTime,status) VALUES (?, ?, ?, ?, ?)';
 
             $pdo = connect();
             $stmt = $pdo->prepare($sql);

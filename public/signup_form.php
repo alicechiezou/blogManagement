@@ -2,7 +2,6 @@
 
     session_start();
 
-    require_once './functions.php';
     require_once '../classes/general.php';
 
     $general = new general();
@@ -51,7 +50,7 @@
             <label for="password_conf">パスワード確認：</label> 
             <input type="password" name="password_conf"> 
         </P> 
-        <input type="hidden" name="csrf_token" value="<?php echo h(setToken());?>">
+        <input type="hidden" name="token" value="<?php echo escapeProcessing(setToken());?>">
         <p>
             <input type="submit" value="新規登録">
         </p>

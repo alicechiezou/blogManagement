@@ -8,18 +8,6 @@
     $err=[];
 
     // バリデーション
-    $token = filter_input(INPUT_POST,'csrf_token');
-
-    // トークンがない、もしくは一致しない場合処理中止
-    if (!isset($_SESSION['csrf_token']) || $token !== 
-    $_SESSION['csrf_token']){
-        exit('不正なリクエスト');
-    }
-
-    //  セッションのトークンを消す（二重対策）
-    unset($_SESSION['csrf_token']);
-
-    // バリデーション
     if(!$username = filter_input(INPUT_POST,'username')){
         $err[] = 'ユーザ名を記入してください。';
     }
